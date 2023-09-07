@@ -1,0 +1,179 @@
+---
+date: '2021-11-10'
+author: 'Carlos Daniel'
+thumbnail: /assets/CRISPR-1.jpg|1020x720
+title: A ferramenta de "Deus" CRISPR-CAS9
+description: A nova técnica chamada CRISPR-CAS9
+prerequisites: []
+stacks: []
+tags: ['ciencia', 'crispr']
+---
+
+# Testes de Divisibilidade Fáceis
+
+O objetivo deste texto é explicar e demonstrar a validez de certos testes de divisibilidade "fáceis", que envolvem apenas a manipulação dos dígitos da representação decimal de um número inteiro positivo. Estes resultados são generalizáveis a qualquer base numérica inteira e maior que $1$, e envolvem apenas certas noções elementares de divisibilidade que também serão explicadas e demonstradas ao longo do texto.
+
+## A Relação de Divisibilidade
+
+No que segue, por *número*, exceto quando explicitamente dito o contrário, discursamos apenas acerca dos números inteiros positivos $1$, $2$, $3$, $\ldots$ e assumimos suficiente familiaridade com a aritmética básica sobre estes números. Se $m$ e $n$ são números quaisquer, então dizemos que $m$ é *divisível* por $n$, ou $n \mid m$ em símbolos, se e apenas se a fração $m / n$ é igual a um número. Caso contrário, dizemos que $m$ *não* é divisível por $n$, ou $n \nmid m$ em símbolos, se e apenas se a fração $m / n$ não é igual a um número, mas a uma razão não-inteira. Provamos a seguir algumas das propriedades fundamentais da divisibilidade.
+
+**Teorema 1.** $n \mid m$ se e apenas se há um número $p$ tal que $m = n \cdot p$.
+
+*Prova.* Se $n \mid m$, então $m / n$ é igual a um número, portanto seja $p = m / n$ este número. Como $(m / n) \cdot n = m$, então $m = n \cdot p$. Similarmente, se há um número $p$ tal que $m = n \cdot p$, então $m / n = (n \cdot p) / m = p \cdot (m / m) = p \cdot 1 = p$, logo $m / n$ é igual a um número $p$, e portanto $n \mid m$. $\Box$
+
+**Teorema 2.** (a) Se $p \mid m + n$ e $p \mid m$, então $p \mid n$. (b) Se $p \mid m$ e $p \mid n$, então $p \mid m + n$.
+
+*Prova.* (a) Se $p \mid m + n$ e $p \mid m$, então há números $a$ e $b$ tais que $m + n = a \cdot p$ e $m = b \cdot p$ por Teorema 1, logo $n = a \cdot p - b \cdot p = (a - b) \cdot p$, e como $m + n > m$, então $a \cdot p > b \cdot p$, logo $a > b$, e portanto $a - b$ é um número, e como há um número $c = a - b$ tal que $n = c \cdot p$, então $p \mid n$ por Teorema 1. (b) Se $p \mid m$ e $p \mid n$, então há números $a$ e $b$ tais que $m = a \cdot p$ e $n = b \cdot p$ por Teorema 1, logo $m + n = a \cdot p + b \cdot p = (a + b) \cdot p$, portanto há um número $c = a + b$ tal que $m + n = c \cdot p$ e, por fim, $p \mid m + n$ por Teorema 1. $\Box$
+
+**Teorema 3.** (a) $n \mid n$. (b) Se $m \mid n$ e $n \mid p$, então $m \mid p$. (c) Se $m \mid n$, então $m \leq n$.
+
+*Prova.* (a) Como $n = n \cdot 1$, então há um número $m = 1$ tal que $n = m \cdot n$, e portanto $n \mid n$ por Teorema 1. (b) Se $m \mid n$ e $n \mid p$, então há números $a$ e $b$ tais que $n = a \cdot m$ e $p = b \cdot n$ por Teorema 1, logo $p = (a \cdot b) \cdot m$, portanto há um número $c = a \cdot b$ tal que $c \cdot m = p$, e por fim $m \mid p$ por Teorema 1. (c) Se $m \mid n$, então há um número $p$ tal que $n = m \cdot p$ por Teorema 1, e como $p$ é positivo, então $1 \leq p$, e portanto $m = m \cdot 1 \leq m \cdot p = n$. $\Box$
+
+Estas propriedades nos permitem deduzir se um número é divisível por outro sem fazer nenhuma divisão. Por exemplo, sabemos que $14 = 7 \cdot 2$ e que $42 = 14 \cdot 3$, logo $14$ é divisível por $7$ e $42$ é divisível por $14$, por Teorema 1, e portanto $42$ também é divisível por $7$ por Teorema 2. Ademais, como $42 = 35 + 7$, como $42$ é divisível por $7$ (como acabamos de demonstrar), e como $7$ é divisível por si mesmo por Teorema 3(a), então $35$ também é divisível por $7$ por Teorema 3(b). Similarmente, como $77 = 42 + 35$, e como $42$ e $35$ são divisíveis por $7$, então $77$ é divisível por $7$ por Teorema 2(b). Por fim, $7 \nmid 2$, pois caso contrário $7 \leq 2$ por Teorema 3(c), o que é falso, e como $42 = 40 + 2$ e $42$ é divisível por $7$, então $7 \nmid 40$, pois caso contrário $7 \mid 2$ por Teorema 2(a).
+
+## Números Bonzinhos
+
+No que segue, assumimos que a base é decimal, i.e. que o numeral $10$ representa o número dez, mas os resultados a seguir são generalizáveis a qualquer base numérica inteira e maior que $1$, exceto talvez pelos exemplos. Se $a_0$, $a_1$, $a_2$, $\ldots$ são números inteiros entre $0$ e $10 - 1$, então representamos a expressão numérica $a_0 + a_1 \cdot 10 + a_2 \cdot 10^2 + \cdots + a_k \cdot 10^k + \cdots$ pela notação $(\ldots a_2 a_1 a_0)$, onde $a_0$, $a_1$, $a_2$, $\ldots$ são os dígitos desta expressão em base $10$. Esta expressão representa um número finito se e apenas se, para algum número $k$, todos os dígitos $a_k$, $a_{k + 1}$, $a_{k + 2}$, $\ldots$ são iguais a zero, em cujo caso também podemos representá-la mais precisamente pela notação $(a_{k - 1} \ldots a_2 a_1 a_0)$. Esta notação nos permite usar variáveis como dígitos na representação base $10$ de um número.
+
+Dizemos que um número é *bonzinho*, relativo a uma base, se e apenas se há um teste de divisibilidade fácil para este número nesta base, onde um tal teste envolve apenas certas manipulações aritméticas simples entre os dígitos da representação deste número nesta base. Dentre os números bonzinhos, os *primitivos* são aqueles que podemos deduzir a partir de suas relações aritméticas com base, enquanto os *derivados* são aqueles que podemos deduzir a partir de suas relações aritméticas com outros números bonzinhos. Naturalmente, $1$ é o único número bonzinhos trivial, pois $1$ é um número bonzinho em qualquer base, e pois todo número é divisível por $1$, e portanto um teste de divisibilidade fácil por $1$ é desnecessário. Vamos aqui considerar apenas os números bonzinhos não-triviais.
+
+Por sua vez, dentre os números bonzinhos primitivos, temos todas as potências dos fatores da base, e todos os números que imediatamente antecedem ou sucedem uma potência da base, e dentre os números bonzinhos derivados, temos todos os números cuja fatoração envolve apenas números bonzinhos primitivos, com no máximo apenas um de cada tal fator, e todos os números que são fatores de números bonzinhos.
+
+Por exemplo, em base decimal, os números bonzinhos até $30$ são: $2$, $3$, $4$, $5$, $6$, $8$, $9$, $10$, $11$, $12$, $15$, $16$, $18$, $20$, $22$, $24$, $25$, $27$, $30$. Dentre eles, os números bonzinhos primitivos são: $2$, $4$, $5$, $8$, $9$, $10$, $11$, $16$, $25$; e os números bonzinhos derivados são: $3$, $6$, $12$, $15$, $18$, $20$, $22$, $24$, $27$, $30$. Por sua vez, dentre os números bonzinhos primitivos, como $2$, $5$ e $10$ são fatores de $10$, então $2 = 2^1$, $4 = 2^2$, $5 = 5^1$, $8 = 2^3$, $16 = 2^4$, $25 = 5^2$ são potências destes fatores, enquanto $9 = 10^1 - 1$ e $11 = 10^1 + 1$ são o antecessor e o sucessor imediatos de uma potência da base; e dentre os números bonzinhos derivados, temos $3$, que é um fator de $9$, e $6$, cuja fatoração $2 \cdot 3$ é composta apenas de números bonzinhos, e assim por diante.
+
+Podemos gerar os números bonzinhos de uma base até um dado número recursivamente, gerando primeiro os números bonzinhos primitivos, e depois gerando os números bonzinhos derivados a partir dos números bonzinhos previamente gerados. Veja abaixo o rascunho de um programa que gera todos os números bonzinhos de uma base até um dado número, se talvez muito ineficientemente. Neste programa, `nice_nums(b, n)` retorna uma lista em ordem crescente de todos os números bonzinhos de base `b` que são menores ou iguais a `n`.
+
+```python
+from math import floor, log
+from sympy import isprime
+from operator import mul
+from functools import reduce
+from itertools import combinations
+
+def sublists_of(l):
+    for k in range(2, len(l) + 1):
+        for sl in combinations(l, k):
+            yield sl
+
+def limit(n):
+    return lambda l: all(1 < p <= pow(n, 1 / len(l)) for p in l)
+
+def nice_prim(b, n):
+    nums = [1]
+    for d in range(2, b + 1):
+        if b % d != 0:
+            continue
+        for k in range(1, floor(log(n, d)) + 1):
+            p = pow(d, k)
+            if p not in nums: nums.append(p)
+            if d == b and p - 1 not in nums: nums.append(p - 1)
+            if d == b and p + 1 not in nums and p + 1 <= n: nums.append(p + 1)
+    nums.sort()
+    return nums
+
+def nice_nums(b, n):
+    nums = nice_prim(b, n)
+    for k in range(2, n + 1):
+        for p in nums:
+            if p % k == 0 and k not in nums:
+                nums.append(k)
+                break
+
+    nums.sort()
+    if len(nums) < 2:
+        return nums
+
+    for sl in filter(limit(n), sublists_of(nums[1:])):
+        p = reduce(mul, sl, 1)
+        if p not in nums:
+            nums.append(p)
+
+    nums.sort()
+    return nums
+
+def nice_primes(b, n):
+    return list(filter(isprime, nice_nums(b, n)))
+```
+
+Sugere-se que o leitor escreva seu próprio programa e optimize-o adequadamente. Como um desafio, o leitor pode analisar o código acima, assim como a definição dos números bonzinhos, e deduzir uma fórmula que, dados uma base numérica $b$ adequada e um número $n$ qualquer, é igual ao número de números bonzinhos em base $b$ até $n$, e que concorda com o valor de `len(nice_nums(b, n))` exatamente.
+
+## Os Testes de Divisibilidade
+
+Veremos a seguir quais são os testes de divisibilidade para os números bonzinhos primitivos. Por sua vez, um teste de divisibilidade fácil pra um número bonzinho derivado do primeiro tipo consiste apenas de múltiplos testes de divisibilidade fáceis para cada um de seus fatores, e um teste de divisibilidade fácil para um número bonzinho derivado do segundo tipo consiste apenas do teste de divisibilidade fácil para o número do qual ele é um fator.
+
+Seja $p$ um fator qualquer da base, i.e. tal que $p \mid 10$, logo há um número $q$ tal que $10 = p \cdot q$, e portanto $10^k = (p \cdot q)^k = p^k \cdot q^k$ para qualquer número $k$. Seja $n$ um número qualquer, e seja $(\ldots a_2 a_1 a_0)$ a representação base $10$ de $n$, logo:
+
+$$
+\begin{align}
+n &= (a_0 + a_1 \cdot 10 + a_2 \cdot 10^2 + \cdots + a_{k - 1} \cdot 10^{k - 1}) + (a_k \cdot 10^k + a_{k + 1} \cdot 10^{k + 1} + a_{k + 2} \cdot 10^{k + 2} + \cdots) \\
+&= (a_{k - 1} \ldots a_2 a_1 a_0) + (a_k \cdot p^k \cdot q^k + a_{k + 1} \cdot p^{k + 1} \cdot q^{k + 1} + a_{k + 2} \cdot p^{k + 2} \cdot q^{k + 2} + \cdots) \\
+&= (a_{k - 1} \ldots a_2 a_1 a_0) + p^k \cdot (a_k \cdot q^k + a_{k + 1} \cdot p \cdot q^{k + 1} + a_{k + 2} \cdot p^2 \cdot q^{k + 2} + \cdots) \\
+\end{align}
+$$
+
+Como $p^k \mid p^k \cdot (a_k \cdot q^k + a_{k + 1} \cdot p \cdot q^{k + 1} + a_{k + 2} \cdot p^2 \cdot q^{k + 2} + \cdots)$ por Teorema 1, então $n$ é divisível por $p^k$ se $(a_{k - 1} \ldots a_2 a_1 a_0)$ também é por Teorema 2(b). Note que $(a_{k - 1} \ldots a_2 a_1 a_0)$ é apenas o número representado pelos $k$ primeiros dígitos de $n$ em base $10$. Portanto, se $p$ é um fator de $10$, e se $k$ é um número qualquer, então $p^k$ é um número bonzinho primitivo em base $10$, e $n = (\ldots a_2 a_1 a_0)$  é divisível por $p^k$ se e apenas se $(a_{k - 1} \ldots a_2 a_1 a_0)$ também é divisível por $p^k$.
+
+Por exemplo, em decimal, os fatores da base são $2$, $5$ e $10$, dentre os quais $8 = 2^3$ é uma potência de um destes fatores, e portanto o teste de divisibilidade por $8$ consiste em verificar que o número formado pelos $3$ primeiros dígitos de um número em decimal é também divisível por $8$. Um número como $9160$ é divisível por $8$ pois $160 = 8 \cdot 20$ também é, enquanto $1300$ não é divisível por $8$, pois $300$ não é: se $300$ fosse divisível por $8$, como $300 = 8 \cdot 37 + 4$, então $4$ também deve ser divisível por $8$ por Teorema 2(a), o que não é o caso, pois isto implica que $8 \leq 4$ por Teorema 3(c), o que é falso.
+
+Agora, seja $m$ um número qualquer, seja $p = 10^m \mp 1$, e sejam $n_k = (a_{(k + 1) \cdot m - 1} \ldots a_{k \cdot m + 2} a_{k \cdot m + 1} a_{k \cdot m})$ para todo número natural $k$. Como $p = 10^m \mp 1$, então $10^m = p \pm 1$, logo $(10^m)^k = (p \pm 1)^k$ para todo número natural $k$, mas pelo teorema binominal, para todo $k$, há um número $q(k)$ em função de $k$ tal que $(p \pm 1)^k = p \cdot q(k)\pm 1$, logo $(10^m)^k = p \cdot q(k) \pm 1$ e, portanto:
+
+$$
+\begin{align}
+n &= (a_0 + a_1 \cdot 10 + a_2 \cdot 10^2 + \cdots + a_{m - 1} \cdot 10^{m - 1}) \\
+&+ (a_m + a_{m + 1} \cdot 10 + a_{m + 2} \cdot 10^2 + \cdots + a_{2 \cdot m - 1} \cdot 10^{m - 1}) \cdot 10^m \\
+&+ (a_{2 \cdot m} + a_{2 \cdot m + 1} \cdot 10 + a_{2 \cdot m + 2} \cdot 10^2 + \cdots + a_{3 \cdot m - 1} \cdot 10^{m - 1}) \cdot (10^m)^2 \\
+&+ (a_{3 \cdot m} + a_{3 \cdot m + 1} \cdot 10 + a_{3 \cdot m + 2} \cdot 10^2 + \cdots + a_{4 \cdot m - 1} \cdot 10^{m - 1}) \cdot (10^m)^3 \\
+& \ \ \vdots \\
+&= n_0 + n_1 \cdot 10^m + n_2 \cdot (10^m)^2 + (10^m)^3 + \cdots \\
+&= n_0 + n_1 \cdot (p \cdot q(1) \pm 1) + n_2 \cdot (p \cdot q(2) \pm 1) + n_3 \cdot (p \cdot q(3) \pm 1) \cdots \\
+&= (n_0 \pm n_1 + n_2 \pm n_3 + \cdots) + p \cdot (n_1 \cdot q(1) + n_2 \cdot q(2) + n_3 \cdot q(3) + \cdots) \\
+\end{align}
+$$
+
+Por fim, como $p \cdot (n_1 \cdot q(1) + n_2 \cdot q(2) + n_3 \cdot q(3) + \cdots)$ por Teorema 1, então $n$ é divisível por $p$ se $n_0 \pm n_1 + n_2 \pm n_3 + \cdots$ também é por Teorema 2(b). Note que $n_k$ é apenas o número representado pelo $k$-ésimo grupo de $m$ dígitos consecutivos de $n = (\ldots a_2 a_1 a_0)$ em base $10$. Por exemplo, se $n = 1.048.950$ e $m = 3$, então $n_0 = 950$, $n_1 = 48$, $n_2 = 1$, e $n_k = 0$ para todo $k > 2$, logo $n$ é divisível por $10^m - 1 = 10^3  - 1 = 999$ se $n_0 + n_1 + n_2 + n_3 + \cdots = 950 + 48 + 1 + 0 + \cdots = 999$ também é, o que é o caso por Teorema 3(a). Similarmente, se $n = 110.090$ e $m = 2$, então $n_0 = 90$, $n_1 = 0$, $n_2 = 11$, e $n_k = 0$ para todo $k > 2$, logo $n$ é divisível por $10^m + 1 = 10^2 + 1 = 101$ se $n_0 - n_1 + n_2 - n_3 + \cdots = 90 - 0 + 11 - 0 + \cdots = 101$ também é, o que é o caso, novamente, por Teorema 3(a).
+
+## Bases Numéricas Boas
+
+Considere bases numéricas $b$ tal que $b$ é um número maior que $1$. Por exemplo, chamamos de binária a base numérica onde $b = 2$, e chamamos de decimal a base numérica onde $b  = 10$. Podemos facilmente estender a nossa notação para a representação de um número em base $b$, substituindo $10$ por $b$ em todo lugar na definição. A notação $(\ldots a_2 a_1 a_0)_b$ representa a expressão $a_0 + a_1 \cdot b + a_2 \cdot b^2 + \cdots$, e se $b = 2$ e esta expressão denota um número, então ela consiste na representação desse número em binário.
+
+Dizemos que uma base numérica $b_1$ é *melhor* que outra base numérica $b_2$, relativo a um intervalo $[a, b]$ de números entre $a$ e $b$, se e apenas se $b_1$ tem mais números bonzinhos neste intervalo do que $b_2$. Podemos dizer que $b_1$ é simplesmente melhor que $b_2$ até $n$ se e apenas se $b_1$ é melhor que $b_2$ relativo ao intervalo $[1, n]$. Dizemos isto pois testes de divisibilidade fáceis são mais eficientes do que fazer divisões com resto para números grandes, e uma base melhor que outra é exatamente uma base onde há mais testes de divisibilidade fáceis. Usando o programa acima, podemos contar quantos números bonzinhos existem nas bases de $2$ a $16$, até um dado número, e efetivamente medir o quão melhores uma destas bases é em relação às demais até o dado número.
+
+```python
+>>> from nice import *
+>>> n = 250
+... for b in range(2, 13):
+...     print(f"len(nice_nums({b}, {n})) = {len(nice_nums(b, n))}")
+...
+len(nice_nums(2, 250)) = 60
+len(nice_nums(3, 250)) = 69
+len(nice_nums(4, 250)) = 46
+len(nice_nums(5, 250)) = 59
+len(nice_nums(6, 250)) = 48
+len(nice_nums(7, 250)) = 37
+len(nice_nums(8, 250)) = 40
+len(nice_nums(9, 250)) = 30
+len(nice_nums(10, 250)) = 40
+len(nice_nums(11, 250)) = 43
+len(nice_nums(12, 250)) = 56
+```
+
+Além desta análise, e ainda com o auxílio do programa acima, podemos também verificar os primeiros números bonzinhos primos de cada base, que são alguns dos números mais importantes de se ter um teste de divisibilidade fácil, pois eles estão envolvidos diretamente em muitos testes de "primalidade" deterministas, e em outros algoritmos onde faz-se necessário saber se um número é divisível por certos números primos razoavelmente pequenos.
+
+```python
+>>> from nice import *
+>>> n = 200
+... for b in range(2, 13):
+...     print(f"nice_primes({b}, {n}) = {nice_primes(b, n)}")
+...
+nice_primes(2, 200) = [2, 3, 5, 7, 11, 13, 17, 31, 43, 127]
+nice_primes(3, 200) = [2, 3, 5, 7, 13, 41]
+nice_primes(4, 200) = [2, 3, 5, 7, 13, 17]
+nice_primes(5, 200) = [2, 3, 5, 7, 13, 31]
+nice_primes(6, 200) = [2, 3, 5, 7, 37]
+nice_primes(7, 200) = [2, 3, 5, 7]
+nice_primes(8, 200) = [2, 3, 5, 7, 13]
+nice_primes(9, 200) = [2, 3, 5, 41]
+nice_primes(10, 200) = [2, 3, 5, 11, 101]
+nice_primes(11, 200) = [2, 3, 5, 11, 61]
+nice_primes(12, 200) = [2, 3, 5, 11, 13, 29]
+```
